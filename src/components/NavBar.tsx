@@ -13,24 +13,24 @@ function NavBar() {
         <NavMenu/>
         <ul className="md:flex items-center gap-5 font-medium hidden lg:w-3/4 ">
           <Link to="/">
-            <li className="hover:border-b-2">Home</li>
+            <li className="hover:border-b-4">Home</li>
           </Link>
           <Link to="ebooks">
-            <li className="hover:border-b-2">Ebooks</li>
+            <li className="hover:border-b-4">Ebooks</li>
           </Link>
           <Link to="journals">
-            <li className="hover:border-b-2">Journals</li>
+            <li className="hover:border-b-4">Journals</li>
           </Link>
           <Link to="report">
-            <li className="hover:border-b-2">Report</li>
+            <li className="hover:border-b-4">Report</li>
           </Link>
           <form
-            className="flex bg-white bg-opacity-40 p-2 px-3 rounded-lg w-3/4 md:w-1/2 "
+            className="flex bg-white bg-opacity-40 p-2 px-3 rounded-lg w-3/4 md:w-full "
           >
             <input
               type="text"
               placeholder="Search for books"
-              className="outline-none w-full bg-transparent text-base text-white placeholder-white placeholder-opacity-60"
+              className="outline-none w-full bg-transparent text-base text-white placeholder-white placeholder:text-based placeholder-opacity-60"
             />
 
             <button>
