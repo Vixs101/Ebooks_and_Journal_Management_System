@@ -5,7 +5,7 @@ import NavMenu from "./NavMenu";
 function NavBar() {
   return (
     <>
-      <nav className="bg-[#179BD7] flex justify-between p-2 md:py-3 md:px-10 text-white items-center w-full">
+      <nav className="bg-[#179BD7] flex justify-between p-2 md:py-3 md:px-20 text-white items-center w-full">
         <div className="flex items-center gap-1 md:w-3/4 lg:w-2/4">
           <img src="/images/logo.png" alt="Logo" className="md:h-10 md:w-10 h-12 w-12" />
           <h1 className="text-lg md:text-2xl font-semibold">TSU E-library</h1>
