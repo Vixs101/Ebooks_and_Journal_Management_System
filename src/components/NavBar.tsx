@@ -5,24 +5,24 @@ import NavMenu from "./NavMenu";
 function NavBar() {
   return (
     <>
-      <nav className="bg-[#179BD7] flex justify-between p-2 md:py-3 md:px-10 text-white items-center ">
-        <div className="flex items-center gap-1">
+      <nav className="bg-[#179BD7] flex justify-between p-2 md:py-3 md:px-10 text-white items-center w-full">
+        <div className="flex items-center gap-1 md:w-3/4 lg:w-2/4">
           <img src="/images/logo.png" alt="Logo" className="md:h-10 md:w-10 h-12 w-12" />
           <h1 className="text-lg md:text-2xl font-semibold">TSU E-library</h1>
         </div>
         <NavMenu/>
-        <ul className="md:flex items-center gap-5 font-medium hidden">
+        <ul className="md:flex items-center gap-5 font-medium hidden lg:w-3/4 ">
           <Link to="/">
-            <li className="hover:border-b-4">Home</li>
+            <li className="hover:border-b-2">Home</li>
           </Link>
           <Link to="ebooks">
-            <li className="hover:border-b-4">Ebooks</li>
+            <li className="hover:border-b-2">Ebooks</li>
           </Link>
           <Link to="journals">
-            <li className="hover:border-b-4">Journals</li>
+            <li className="hover:border-b-2">Journals</li>
           </Link>
           <Link to="report">
-            <li className="hover:border-b-4">Report</li>
+            <li className="hover:border-b-2">Report</li>
           </Link>
           <form
             className="flex bg-white bg-opacity-40 p-2 px-3 rounded-lg w-3/4 md:w-1/2 "

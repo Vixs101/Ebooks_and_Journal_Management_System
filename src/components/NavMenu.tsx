@@ -7,7 +7,7 @@ function NavMenu() {
 
   return (
     <>
-      <div className="flex w-2/3 justify-end">
+      <div className="flex md:w-2/3 justify-end">
         {!open ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -38,17 +38,25 @@ function NavMenu() {
           </svg>
         )}
 
-        {open &&  (
-            <div className="absolute flex flex-col gap-5 px-5 py-10 blue1 text-lg font-semibold right-0 mt-12 h-[calc(100vh-7rem)] w-[calc(100vw-5rem)] bg-white border-gray-300 border-2 text-black rounded-lg duration-500">
-                {links.map((link) => (
-                    <Link to={link.url} key={link.id} onClick={()=>{setOpen(false)}} className="flex gap-2 text-[#179BD7]">
-                        {link.icon}
-                        {link.title}
-                        <hr />
-                    </Link>
-                ))}
-                <hr className=" bg-slate-950 mt-40"/>
-            </div>
+        {open && (
+          <div className="absolute flex flex-col gap-5 px-5 py-10 text-lg font-semibold right-0 mt-12 h-[calc(100vh-7rem)] w-[calc(100vw-5rem)] bg-white border-gray-300 border-2 text-black rounded-lg duration-500">
+            {links.map((link) => (
+              <Link
+                to={link.url}
+                key={link.id}
+                onClick={() => {
+                  setOpen(false);
+                }}
+              >
+                <div className="flex text-[#179BD7] hover:bg-gray-100 rounded-sm h-10 gap-2 items-center">
+                  {link.icon}
+                  {link.title}
+                </div>
+                <hr className="bg-slate-950" />
+              </Link>
+            ))}
+            <hr className=" bg-slate-950 mt-40" />
+          </div>
         )}
       </div>
     </>
