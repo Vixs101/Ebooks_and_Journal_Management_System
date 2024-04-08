@@ -1,14 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import NavMenu from "./NavMenu";
 
 function NavBar() {
   return (
     <>
-      <nav className="bg-[#179BD7] flex justify-between p-2 md:py-3 md:px-10 text-white ">
+      <nav className="bg-[#179BD7] flex justify-between p-2 md:py-3 md:px-10 text-white items-center ">
         <div className="flex items-center gap-1">
           <img src="/images/logo.png" alt="Logo" className="md:h-10 md:w-10 h-12 w-12" />
           <h1 className="text-lg md:text-2xl font-semibold">TSU E-library</h1>
         </div>
+        <NavMenu/>
         <ul className="md:flex items-center gap-5 font-medium hidden">
           <Link to="/">
             <li className="hover:border-b-4">Home</li>
