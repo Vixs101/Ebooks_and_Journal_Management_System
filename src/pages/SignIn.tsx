@@ -65,7 +65,7 @@ function SignIn() {
                   htmlFor="selectDepartment"
                   className="font-semibold text-gray-800"
                 >
-                  Department
+                  Department *
                 </label>
                 <select
                   id="departments"
