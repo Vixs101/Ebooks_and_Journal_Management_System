@@ -6,14 +6,20 @@ function Home() {
     <>
       <NavBar />
       <section className="p-2 md:px-20 w-full h-full md:py-10">
-        <div className="flex md:flex-row flex-col- w-full h-2/3 bg-[#179BD7] rounded-lg text-white md:px-8 items-center">
-          <aside className="md:h-1/2 text-center md:text-start text-xl w-full md:w-1/2 lg:w-3/4 md:text-4xl lg:text-5xl ">
-            <h1 className="w-full font-semibold leading-12">Your Journey To Infinite Learning Begins Here</h1>
+        <section className="flex md:flex-row flex-col w-full h-1/2 md:h-2/3 bg-[#179BD7] rounded-lg text-white md:px-10 items-center p-3">
+          <aside className="md:w-1/2 h-2/6 text-2xl text-center md:text-start md:text-3xl lg:text-5xl">
+            <h1 className="mt-10 w-full h-full md:h-0 font-semibold leading-12 ">
+              Your Journey To Infinite Learning Begins Here
+            </h1>
           </aside>
-          <aside className="bg-[url(/images/heroImage.png)] bg-no-repeat bg-center bg-cover w-full md:w-1/2 lg:w-1/2 md:h-full h-3/4 ">
-
+          <aside className="flex-grow h-1/2 md:h-3/4 lg:h-full md:w-3/4">
+            <img
+              src="/images/heroImage.png"
+              alt="Hero image"
+              className="w-full h-full"
+            />
           </aside>
-        </div>
+        </section>
       </section>
     </>
   );
