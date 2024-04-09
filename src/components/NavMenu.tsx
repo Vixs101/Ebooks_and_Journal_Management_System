@@ -52,7 +52,7 @@ function NavMenu() {
                   {link.icon}
                   {link.title}
                 </div>
-                <hr className="bg-slate-950" />
+                <hr className="" />
               </Link>
             ))}
             <hr className=" bg-slate-950 mt-40" />
