@@ -8,7 +8,7 @@ function Journals() {
       <NavBar />
       <section className="flex flex-col px-7 md:px-20 w-full h-full md:py-10 mb-10">
         <h1 className="mt-5 text-lg md:text-2xl font-semibold text-gray-800 text-center">
-          Available Ebooks
+          Available Journals
         </h1>
         <main className="grid grid-cols-2 md:grid-cols-4 mt-5 gap-6 ">
           {ebooks.map((ebook) => (
@@ -31,7 +31,7 @@ function Journals() {
           ))}
         </main>
         <div className="flex items-center justify-center w-full text-center my-6">
-          <p className="text-gray-800 text-xl font-semibold">See More...</p>
+          <p className="text-gray-800 text-lg md:text-xl font-semibold">See More...</p>
         </div>
       </section>
     </>
