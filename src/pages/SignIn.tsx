@@ -37,7 +37,7 @@ function SignIn() {
                   type="text"
                   name="LibraryCardId"
                   placeholder="Enter Library Card Id"
-                  className="outline-none border p-2 border-[#179BD7] w-full rounded-sm"
+                  className="outline-none border p-2 border-[#8f8f3b] w-full rounded-sm"
                 />
               </div>
 
@@ -51,7 +51,7 @@ function SignIn() {
                 </label>
                 <select
                   id="faculty"
-                  className="outline-none border p-2 border-[#179BD7] w-full rounded-sm"
+                  className="outline-none border p-2 border-[#8f8f3b] w-full rounded-sm"
                 >
                   <option value="">Select...</option>
                   <option value="option1">Option 1</option>
@@ -69,7 +69,7 @@ function SignIn() {
                 </label>
                 <select
                   id="departments"
-                  className="outline-none border p-2 border-[#179BD7] w-full rounded-sm"
+                  className="outline-none border p-2 border-[#8f8f3b] w-full rounded-sm"
                 >
                   <option value="">Select...</option>
                   <option value="option1">Option 1</option>
@@ -78,10 +78,10 @@ function SignIn() {
                 </select>
               </div>
 
-              <button className="bg-[#179BD7] hover:bg-[#3db5ed] p-2 rounded-sm text-white font-semibold">
+              <button className="bg-[#179BD7] hover:bg-[#3db5ed] p-2 rounded-xl text-white font-semibold w-1/2 self-center">
                 Sign In
               </button>
-              <div className="flex items-center gap-2 mb-10 md:mb-2">
+              <div className="flex self-center items-center gap-2 mb-10 md:mb-2">
                 <input
                   type="checkbox"
                   name="saveDetails"

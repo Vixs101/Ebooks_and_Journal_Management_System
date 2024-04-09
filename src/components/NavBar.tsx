@@ -8,7 +8,7 @@ function NavBar() {
       <nav className="bg-[#179BD7] flex justify-between px-7 md:py-3 md:px-20 text-white items-center w-full">
         <div className="flex items-center gap-1 md:w-3/4 lg:w-2/4">
           <img src="/images/logo.png" alt="Logo" className="md:h-10 md:w-10 h-12 w-12" />
-          <h1 className="text-lg md:text-2xl font-semibold">TSU E-library</h1>
+          <h1 className="text-lg md:text-xl lg:text-2xl font-semibold">TSU E-library</h1>
         </div>
         <NavMenu/>
         <ul className="md:flex items-center gap-5 font-medium hidden lg:w-3/4 ">
