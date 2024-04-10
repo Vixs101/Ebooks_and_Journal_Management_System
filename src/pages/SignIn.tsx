@@ -1,6 +1,91 @@
-import React from "react";
+import React, { useState } from "react";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { auth, db } from "../firebase/firebaseConfig";
 
 function SignIn() {
+  const [loginType, setLoginType] = useState("login");
+  const [error, setError] = useState("");
+  const [userCredentials, setUserCredentials] = useState({});
+  const [isValidRegNumber, setIsValidRegNumber] = useState(true);
+  const [isLoginIn, setIsLoginIn] = useState(false);
+  const navigate = useNavigate();
+
+  // function that retrieves the user credentials
+  function handleCredentials(e) {
+    const { name, value } = e.target;
+    setUserCredentials({ ...userCredentials, [name]: value });
+
+    if (name === "regNumber") {
+      // defining regex pattern for reg format
+      const regNumberPattern = /^TSU\/[A-Z]{3}\/[A-Z]{2}\/\d{2}\/\d{4}$/;
+
+      // validating the input
+      const isValidRegNumber = regNumberPattern.test(value);
+
+      //setting validating state based on validation result
+      setIsValidRegNumber(isValidRegNumber);
+    }
+  }
+
+  // // function to handle signup and send the details to firebase
+  function handleSignup(e) {
+    e.preventDefault();
+    setError("");
+
+    createUserWithEmailAndPassword(
+      auth,
+      userCredentials.email,
+      userCredentials.password
+    )
+      .then((userCredential) => {
+        const user = userCredential.user;
+
+        //adding user details to firestore
+        //@ts-ignore
+        db.collection("user")
+          .add({
+            regNumber: userCredentials.regNumber,
+            email: userCredentials.email,
+          })
+          .then(() => {
+            navigate("/");
+          });
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  }
+
+  // function to sign in an existing user
+  function handleLogin(e) {
+    e.preventDefault();
+    setError("");
+    setIsLoginIn(true);
+
+    signInWithEmailAndPassword(
+      auth,
+      userCredentials.email,
+      userCredentials.password
+    )
+      .then((userCredential) => {
+        const user = userCredential.user;
+
+        if (user) {
+          navigate("/");
+        }
+      })
+      .catch((error) => {
+        setError(error.message);
+      })
+      .finally(() => {
+        setIsLoginIn(false);
+      });
+  }
+
   return (
     <>
       <section className="flex md:flex-row flex-col h-full w-full">
@@ -9,88 +94,121 @@ function SignIn() {
             <div className="bg-[#179BD7] h-full w-full bg-opacity-60 "></div>
           </div>
         </aside>
-        <aside className="h-3/4 md:h-full md:w-1/2 flex flex-col items-center justify-center pb-5 pt-3 px-5 md:px-7 lg:px-20 text-center">
-          <div className="flex flex-col items-center justify-center h-full w-full gap-4  ">
+        <aside className="h-3/4 md:h-full md:w-1/2 flex flex-col items-center justify-center pb-5 px-5 md:px-7 lg:px-20 text-center">
+          <div className="flex flex-col items-center justify-center h-full w-full gap-2  ">
             <img
               src="/images/logo.png"
               alt="School logo"
               className="lg:h-1/6 lg:w-1/6"
             />
-            <div className="flex flex-col items-center gap-3">
+            <div className="flex flex-col items-center gap-2">
               <h1 className="text-2xl font-semibold text-gray-800">
                 Welcome to Taraba State University E-Library Portal
               </h1>
               <p className="text-base text-gray-400 font-medium">
-                Kindly fill in the information below to sign in
+                Login or create an account to continue
               </p>
             </div>
-            <form className="flex flex-col gap-3 w-full">
+            <div className="flex gap-3">
+              <button
+                className={`rounded-lg text-white  font-bold p-2  ${
+                  loginType == "login" ? "bg-slate-600" : "bg-[#179BD7]"
+                }`}
+                onClick={() => setLoginType("login")}
+              >
+                Login
+              </button>
+              <button
+                className={`rounded-lg  text-white font-bold p-2  ${
+                  loginType == "signup" ? "bg-slate-600" : "bg-[#179BD7]"
+                }`}
+                onClick={() => setLoginType("signup")}
+              >
+                Signup
+              </button>
+            </div>
+
+            <form action="submit" className="flex flex-col gap-3 w-full">
               {/* card id */}
               <div className="flex flex-col items-start gap-2">
                 <label
-                  htmlFor="LibraryCardId"
+                  htmlFor="registrationNumber"
                   className="font-semibold text-gray-800"
                 >
-                  Card Number *
+                  Reg Number *
                 </label>
                 <input
                   type="text"
-                  name="LibraryCardId"
-                  placeholder="Enter Library Card Id"
-                  className="outline-none border p-2 border-[#8f8f3b] w-full rounded-sm"
+                  name="regNumber"
+                  placeholder="Enter your Registration Number"
+                  onChange={(e) => {
+                    handleCredentials(e);
+                  }}
+                  className={`outline-none border p-2 ${
+                    isValidRegNumber ? "border-[#8f8f3b]" : "border-red-500"
+                  } w-full rounded-lg`}
                 />
+                {!isValidRegNumber && (
+                  <p className="text-red-500 text-sm ml-3">
+                    Invalid registration number format
+                  </p>
+                )}
               </div>
 
               {/* faculty */}
               <div className="flex flex-col items-start gap-2">
-                <label
-                  htmlFor="selectFaculty"
-                  className="font-semibold text-gray-800"
-                >
-                  Select faculty *
+                <label htmlFor="email" className="font-semibold text-gray-800">
+                  Enter your Email *
                 </label>
-                <select
-                  id="faculty"
-                  className="outline-none border p-2 border-[#8f8f3b] w-full rounded-sm"
-                >
-                  <option value="">Select...</option>
-                  <option value="option1">Option 1</option>
-                  <option value="option2">Option 2</option>
-                  <option value="option3">Option 3</option>
-                </select>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="enter your school mail"
+                  onChange={(e) => {
+                    handleCredentials(e);
+                  }}
+                  className="outline-none border p-2 border-[#8f8f3b] w-full rounded-lg"
+                />
               </div>
               {/* department */}
               <div className="flex flex-col items-start gap-2">
                 <label
-                  htmlFor="selectDepartment"
+                  htmlFor="password"
                   className="font-semibold text-gray-800"
                 >
-                  Department *
+                  Password *
                 </label>
-                <select
-                  id="departments"
-                  className="outline-none border p-2 border-[#8f8f3b] w-full rounded-sm"
-                >
-                  <option value="">Select...</option>
-                  <option value="option1">Option 1</option>
-                  <option value="option2">Option 2</option>
-                  <option value="option3">Option 3</option>
-                </select>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="enter your password"
+                  onChange={(e) => {
+                    handleCredentials(e);
+                  }}
+                  className="outline-none border p-2 border-[#8f8f3b] w-full rounded-lg"
+                />
               </div>
 
-              <button className="bg-[#179BD7] hover:bg-[#3db5ed] p-2 rounded-xl text-white font-semibold w-1/2 self-center">
-                Sign In
-              </button>
-              <div className="flex self-center items-center gap-2 mb-10 md:mb-2">
-                <input
-                  type="checkbox"
-                  name="saveDetails"
-                  className="h-6 w-7 "
-                />
-                <label htmlFor="saveDetails" className="text-gray-400">
-                  Remember Me
-                </label>
-              </div>
+              {loginType == "login" ? (
+                <button
+                  onClick={(e) => {
+                    handleLogin(e);
+                  }}
+                  className="rounded-xl font-bold p-2 bg-[#179BD7] hover:bg-[#49bced] md:w-3/12 text-white self-center cursor-pointer"
+                >
+                  Login
+                </button>
+              ) : (
+                <button
+                  onClick={(e) => {
+                    handleSignup(e);
+                  }}
+                  className="rounded-xl font-bold p-2 bg-[#179BD7] hover:bg-[#49bced] md:w-3/12 text-white self-center cursor-pointer"
+                >
+                  Sign up
+                </button>
+              )}
+              {error && <div className="mt-3 text-gray-800">{error}</div>}
             </form>
           </div>
         </aside>
