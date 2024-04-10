@@ -7,11 +7,17 @@ function NavBar() {
     <>
       <nav className="bg-[#179BD7] flex justify-between px-7 md:py-3 md:px-20 text-white items-center w-full">
         <div className="flex items-center gap-1 md:w-3/4 lg:w-2/4">
-          <img src="/images/logo.png" alt="Logo" className="md:h-10 md:w-10 h-12 w-12" />
-          <h1 className="text-lg md:text-xl lg:text-2xl font-semibold">TSU E-library</h1>
+          <img
+            src="/images/logo.png"
+            alt="Logo"
+            className="md:h-10 md:w-10 h-12 w-12"
+          />
+          <h1 className="text-lg lg:text-2xl font-semibold">
+            TSU E-library
+          </h1>
         </div>
-        <NavMenu/>
-        <ul className="md:flex items-center gap-5 font-medium hidden lg:w-3/4 ">
+        <NavMenu />
+        <ul className="md:flex items-center justify-between font-medium hidden w-2/4  text-sm lg:text-lg gap-4">
           <Link to="/">
             <li className="hover:border-b-4">Home</li>
           </Link>
@@ -22,32 +28,11 @@ function NavBar() {
             <li className="hover:border-b-4">Journals</li>
           </Link>
           <Link to="report">
-            <li className="hover:border-b-4">Report</li>
+            <li className="hover:border-b-4 mr-3">Report</li>
           </Link>
-          <form
-            className="flex bg-white bg-opacity-40 p-2 px-3 rounded-lg w-3/4 md:w-2/4"
-          >
-            <input
-              type="text"
-              placeholder="Search for books"
-              className="outline-none w-full bg-transparent text-base text-white placeholder-white placeholder:text-based placeholder-opacity-60"
-            />
-
-            <button>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-7 h-7 text-white font-extrabold cursor-pointer"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </button>
-          </form>
+          <button className="flex rounded-2xl text-[#179BD7] bg-white hover:bg-slate-200 md:w-16 lg:w-20 p-2 h-8 items-center">
+            Logout
+          </button>
         </ul>
       </nav>
     </>

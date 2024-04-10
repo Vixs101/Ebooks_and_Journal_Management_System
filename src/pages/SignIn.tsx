@@ -4,7 +4,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { auth, db } from "../firebase/firebaseConfig";
+import { auth } from "../firebase/firebaseConfig";
 
 function SignIn() {
   const [loginType, setLoginType] = useState("login");
@@ -38,22 +38,18 @@ function SignIn() {
 
     createUserWithEmailAndPassword(
       auth,
+      //@ts-ignore
       userCredentials.email,
+      //@ts-ignore
       userCredentials.password
     )
       .then((userCredential) => {
         const user = userCredential.user;
 
-        //adding user details to firestore
-        //@ts-ignore
-        db.collection("user")
-          .add({
-            regNumber: userCredentials.regNumber,
-            email: userCredentials.email,
-          })
-          .then(() => {
-            navigate("/");
-          });
+        if (user) {
+          navigate("/");
+        }
+ 
       })
       .catch((error) => {
         setError(error.message);
@@ -68,7 +64,9 @@ function SignIn() {
 
     signInWithEmailAndPassword(
       auth,
+      //@ts-ignore
       userCredentials.email,
+      //@ts-ignore
       userCredentials.password
     )
       .then((userCredential) => {

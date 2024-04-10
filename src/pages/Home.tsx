@@ -6,11 +6,11 @@ function Home() {
   return (
     <>
       <NavBar />
-      <section className="flex flex-col px-7 md:px-20 w-full h-full md:py-10 mb-10 items-center">
-        <form className="md:hidden border-2 border-[#179BD7] p-2 px-3 rounded-xl w-3/4 md:w-2/4 flex mt-7">
+      <section className="flex flex-col px-7 md:px-20 w-full h-full md:py-10 mb-10 items-center bg-gray-50">
+        <form className="border-2 border-[#179BD7] p-2 px-3 rounded-xl w-3/4 md:w-2/4 lg:w-2/5 flex mt-7 md:mt-0">
           <input
             type="text"
-            placeholder="Search for books"
+            placeholder="Search for e-books or Journals"
             className="outline-none w-full bg-transparent text-base text-gray-800 placeholder:text-based placeholder-opacity-60"
           />
 
@@ -30,7 +30,7 @@ function Home() {
           </button>
         </form>
 
-        <section className="flex md:flex-row flex-col w-full h-1/2 md:h-2/3 bg-[#179BD7] rounded-lg text-white md:px-10 items-center p-3 mt-5 gap-10 md:gap-0">
+        <section className="flex md:flex-row flex-col w-full h-1/2 md:h-2/3 bg-[#179BD7] rounded-lg text-white md:px-10 items-center p-3 mt-5  gap-10 md:gap-0">
           <aside className="md:w-3/4 h-2/6 text-2xl text-center md:text-start md:text-3xl lg:text-5xl">
             <h1 className="my-10 md:my-0 w-full h-full md:h-0 font-semibold leading-12 ">
               Your Journey To Infinite Learning Begins Here
@@ -44,25 +44,26 @@ function Home() {
             />
           </aside>
         </section>
-        <main className="grid grid-cols-2 md:grid-cols-4 mt-14 gap-6 ">
+        <main className="grid grid-cols-2 md:grid-cols-4 mt-7 md:mt-14 gap-6 md:gap-3 lg:gap-6 ">
           {ebooks.map((ebook, index) => (
             <div
               key={index}
-              className="flex flex-col gap-3 bg-gray-50 hover:bg-slate-200 border-2 rounded-b-lg cursor-pointer"
+              className="flex flex-col gap-3 bg-gray-50 hover:bg-slate-200 border-2 rounded-lg cursor-pointer"
             >
               <img
                 src={`/images/${ebook.image}.png`}
                 alt="Ebook cover"
-                className="h-4/5"
+                className="h-4/5 rounded-t-lg"
               />
-              <div className="px-3 gap-5 pb-50">
-                <h2 className="text-lg text-gray-800 font-semibold">
+
+              <div className="px-3 gap-6 pb-50">
+                <h2 className="text-lg md:text-sm lg:text-lg text-gray-800 font-semibold">
                   {ebook.title}
                 </h2>
-                <p className="text-[#8f8f3b] text-xs md:text-base">
+                <p className="text-[#8f8f3b] text-xs lg:text-base">
                   {ebook.Edition}
                 </p>
-                <button className="bg-[#179BD7] hover:bg-[#3db5ed] p-1 rounded-lg text-white text-center text-sm h-8">
+                <button className="flex rounded-2xl bg-[#179BD7] text-white hover:bg-[#4cbef3] lg:w-16 px-2 lg:h-8 items-center text-center my-2 text-base md:text-sm lg:text-base">
                   Read..
                 </button>
               </div>
