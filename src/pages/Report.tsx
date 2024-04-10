@@ -4,7 +4,6 @@ import NavBar from "../components/NavBar";
 function Report() {
   return (
     <>
-      <NavBar />
       <section className="flex flex-col px-7 md:px-20 w-full h-full py-10 mb-10 items-center text-center gap-10">
         <div className="flex flex-col md:w-1/2 gap-8 text-center items-center">
           <h1 className="text-2xl md:text-3xl lg:text-5xl font-semibold text-gray-800">
@@ -21,9 +20,9 @@ function Report() {
         >
           <textarea
             placeholder="Type your feedback here"
-            className="outline-none border-2 rounded-xl w-full placeholder:text-center placeholder:items-start h-3/4 p-3"
+            className="outline-none border-2 rounded-xl w-full placeholder:text-center placeholder:items-start h-4/5 p-3"
           />{" "}
-          <button className="bg-[#179BD7] hover:bg-[#3db5ed] p-2 rounded-sm text-white font-semibold md:w-1/4">
+          <button className="bg-[#179BD7] hover:bg-[#3db5ed] p-2 rounded-sm text-white font-semibold md:w-1/3 lg:w-1/4">
             Send feedback
           </button>
         </form>

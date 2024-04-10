@@ -5,7 +5,6 @@ import NavBar from "../components/NavBar";
 function Home() {
   return (
     <>
-      <NavBar />
       <section className="flex flex-col px-7 md:px-20 w-full h-full md:py-10 mb-10 items-center bg-gray-50">
         <form className="border-2 border-[#179BD7] p-2 px-3 rounded-xl w-3/4 md:w-2/4 lg:w-2/5 flex mt-7 md:mt-0">
           <input

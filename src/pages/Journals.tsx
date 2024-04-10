@@ -5,7 +5,6 @@ import { ebooks } from "../lib/constants";
 function Journals() {
   return (
     <>
-      <NavBar />
       <section className="flex flex-col px-7 md:px-20 w-full h-full md:py-10 mb-10">
         <h1 className="mt-5 text-lg md:text-2xl font-semibold text-gray-800 text-center">
           Available Journals
