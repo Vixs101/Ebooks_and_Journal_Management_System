@@ -30,7 +30,7 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
 
   return (
     <div className="">
-      <NavBar />
+      <NavBar navigate={navigate} />
       <Outlet />
     </div>
   );

@@ -1,16 +1,15 @@
 import React from "react";
 import { ebooks } from "../lib/constants";
-import NavBar from "../components/NavBar";
 
 function Home() {
   return (
     <>
       <section className="flex flex-col px-7 md:px-20 w-full h-full md:py-10 mb-10 items-center bg-gray-50">
-        <form className="border-2 border-[#179BD7] p-2 px-3 rounded-xl w-3/4 md:w-2/4 lg:w-2/5 flex mt-7 md:mt-0">
+        <form className="border-2 border-[#179BD7] p-2 px-3 rounded-2xl md:rounded-xl w-3/4 md:w-2/4 lg:w-2/5 flex mt-7 md:mt-0">
           <input
             type="text"
             placeholder="Search for e-books or Journals"
-            className="outline-none w-full bg-transparent text-base text-gray-800 placeholder:text-based placeholder-opacity-60"
+            className="outline-none w-full bg-transparent text-base text-gray-800 placeholder:text-sm md:placeholder:text-base placeholder-opacity-60"
           />
 
           <button>

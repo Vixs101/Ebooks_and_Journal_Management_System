@@ -16,7 +16,6 @@ Taraba State University E-Library Portal is a web-based application designed to 
 * React router and React Router dom
 * Tailwindcss
 * Firebase for the backend
-* Vercel for hosting
 
 ## Contact
 For questions, feedback, or support, please contact me @elijahvix695@gmail.com

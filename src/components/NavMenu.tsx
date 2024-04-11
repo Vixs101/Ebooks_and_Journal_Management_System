@@ -1,8 +1,35 @@
 import React, { useState } from "react";
 import { links } from "../lib/constants";
 import { Link } from "react-router-dom";
+import { auth } from "../firebase/firebaseConfig";
+import { signOut } from "firebase/auth";
 
-function NavMenu() {
+// function to signout users
+function handleSignOut(navigate) {
+  signOut(auth)
+    .then(() => {
+      navigate("sign_in");
+      return null;
+    })
+    .catch((error) => {
+      // Handle errors with specific messages
+      let errorMessage = "Sign out failed. Please try again.";
+      switch (error.code) {
+        case "auth/network-request-failed":
+          errorMessage =
+            "Network error. Please check your internet connection.";
+          break;
+        case "auth/too-many-requests":
+          errorMessage = "Too many sign-out attempts. Please try again later.";
+          break;
+        default:
+          console.error("Sign out error:", error);
+      }
+      alert(errorMessage);
+    });
+}
+
+function NavMenu({ navigate }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -55,6 +82,14 @@ function NavMenu() {
                 <hr className="" />
               </Link>
             ))}
+            <button
+              className="flex rounded-2xl bg-[#179BD7] text-white hover:bg-[#4cbef3] md:w-16 lg:w-20 p-2 h-8 items-center self-center"
+              onClick={() => {
+                handleSignOut(navigate);
+              }}
+            >
+              Logout
+            </button>
             <hr className=" bg-slate-950 mt-40" />
           </div>
         )}
