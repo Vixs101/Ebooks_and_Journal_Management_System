@@ -13,19 +13,18 @@ import Ebooks from "./pages/Ebooks";
 import Journals from "./pages/Journals";
 import Report from "./pages/Report";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AdminDashboard from "./admin/AdminDashboard";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="sign_in" element={<SignIn />} />
-      <Route 
-        path="/"
-        element={<ProtectedRoute />}
-      >
+      <Route path="/" element={<ProtectedRoute />}>
         <Route index element={<Home />} />
         <Route path="ebooks" element={<Ebooks />} />
         <Route path="report" element={<Report />} />
         <Route path="journals" element={<Journals />} />
+        <Route path="admin_dashboard" element={<AdminDashboard />} />
       </Route>
     </>
   )
