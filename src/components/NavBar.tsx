@@ -57,7 +57,7 @@ function NavBar({ navigate }) {
             <li className="hover:border-b-4 mr-3">Report</li>
           </Link>
           <button
-            className="flex rounded-2xl text-[#179BD7] bg-white hover:bg-slate-200 md:w-16 lg:w-20 p-2 h-8 items-center"
+            className="flex rounded-2xl text-[#179BD7] bg-white hover:bg-slate-200 md:w-16 lg:w-20 p-2 h-8 items-center border border-gray-50"
             onClick={() => {
               handleSignOut(navigate);
             }}
