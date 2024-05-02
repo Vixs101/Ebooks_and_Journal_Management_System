@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { PropsWithChildren, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { auth } from "../firebase/firebaseConfig";
+import { auth, db } from "../firebase/firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
+import { collection, addDoc, getDoc } from "firebase/firestore";
+
 import NavBar from "./NavBar";
 
 type ProtectedRouteProps = PropsWithChildren;
 
 export default function ProtectedRoute({ children }: ProtectedRouteProps) {
   const [isUserSignedIn, setIsUserSignedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,6 +19,7 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
       setIsUserSignedIn(!!user);
       
       if (user) {
+        
         navigate("/");
       }
     });
