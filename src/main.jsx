@@ -24,7 +24,6 @@ const router = createBrowserRouter(
         <Route path="ebooks" element={<Ebooks />} />
         <Route path="report" element={<Report />} />
         <Route path="journals" element={<Journals />} />
-        <Route path="admin" element={<AdminDashboard />} />
       </Route>
     </>
   )
