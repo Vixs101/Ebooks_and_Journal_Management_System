@@ -4,12 +4,17 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../firebase/firebaseConfig";
+import { auth, db } from "../firebase/firebaseConfig";
+import { collection, addDoc, getDoc, doc, setDoc } from "firebase/firestore";
 
 function SignIn() {
   const [loginType, setLoginType] = useState("login");
   const [error, setError] = useState("");
-  const [userCredentials, setUserCredentials] = useState({});
+  const [userCredentials, setUserCredentials] = useState({
+    email: "",
+    password: "",
+    regNumber: "",
+  });
   const [isValidRegNumber, setIsValidRegNumber] = useState(true);
   const [isLoginIn, setIsLoginIn] = useState(false);
   const navigate = useNavigate();
@@ -31,29 +36,44 @@ function SignIn() {
     }
   }
 
-  // // function to handle signup and send the details to firebase
-  function handleSignup(e) {
+  //function to handle signUp and send the details to firebase
+
+  async function handleSignUp(e) {
     e.preventDefault();
     setError("");
 
-    createUserWithEmailAndPassword(
-      auth,
-      //@ts-ignore
-      userCredentials.email,
-      //@ts-ignore
-      userCredentials.password
-    )
-      .then((userCredential) => {
-        const user = userCredential.user;
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        userCredentials.email,
+        userCredentials.password
+      );
 
-        if (user) {
-          navigate("/");
-        }
- 
-      })
-      .catch((error) => {
-        setError(error.message);
-      });
+      console.log("User created:", userCredential.user);
+
+      const user = userCredential.user;
+
+      console.log(user);
+
+      if (user) {
+        // adding user to firestore with role set as "user"
+        console.log(user.uid);
+
+        const userRef = doc(collection(db, "users"), user.uid); //creating a doc reference
+        await setDoc(userRef, {
+          email: user.email,
+          role: "user",
+          registrationNumber: userCredentials.regNumber,
+        });
+
+        console.log("User document created successfully");
+
+        navigate("/"); //redirect to homepage
+      }
+    } catch (error) {
+      console.error("Error creating user:", error.message);
+      setError(error.message);
+    }
   }
 
   // function to sign in an existing user
@@ -192,16 +212,16 @@ function SignIn() {
                   onClick={(e) => {
                     handleLogin(e);
                   }}
-                  className="rounded-xl font-bold p-2 bg-[#179BD7] hover:bg-[#49bced] md:w-3/12 text-white self-center cursor-pointer"
+                  className="rounded-xl font-bold p-2 bg-[#179BD7] hover:bg-[#49bced] md:w-3/12 text-white self-center cursor-pointer mb-10 md:mb-0"
                 >
                   Login
                 </button>
               ) : (
                 <button
                   onClick={(e) => {
-                    handleSignup(e);
+                    handleSignUp(e);
                   }}
-                  className="rounded-xl font-bold p-2 bg-[#179BD7] hover:bg-[#49bced] md:w-3/12 text-white self-center cursor-pointer"
+                  className="rounded-xl font-bold p-2 bg-[#179BD7] hover:bg-[#49bced] md:w-3/12 text-white self-center cursor-pointer mb-10 md:mb-0"
                 >
                   Sign up
                 </button>
