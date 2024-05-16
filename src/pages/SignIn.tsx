@@ -36,8 +36,8 @@ function SignIn() {
     }
   }
 
-  //function to handle signUp and send the details to firebase
 
+  //function to handle signUp and send the details to firebase
   async function handleSignUp(e) {
     e.preventDefault();
     setError("");
@@ -49,16 +49,10 @@ function SignIn() {
         userCredentials.password
       );
 
-      console.log("User created:", userCredential.user);
-
       const user = userCredential.user;
-
-      console.log(user);
 
       if (user) {
         // adding user to firestore with role set as "user"
-        console.log(user.uid);
-
         const userRef = doc(collection(db, "users"), user.uid); //creating a doc reference
         await setDoc(userRef, {
           email: user.email,
@@ -66,12 +60,9 @@ function SignIn() {
           registrationNumber: userCredentials.regNumber,
         });
 
-        console.log("User document created successfully");
-
         navigate("/"); //redirect to homepage
       }
     } catch (error) {
-      console.error("Error creating user:", error.message);
       setError(error.message);
     }
   }
@@ -84,9 +75,7 @@ function SignIn() {
 
     signInWithEmailAndPassword(
       auth,
-      //@ts-ignore
       userCredentials.email,
-      //@ts-ignore
       userCredentials.password
     )
       .then((userCredential) => {
