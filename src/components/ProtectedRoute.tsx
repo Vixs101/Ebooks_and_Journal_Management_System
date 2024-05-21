@@ -43,17 +43,17 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
     return null;
   }
 
-  //Only render children if user is signed in and has "admin" role
-  if (!userRole) {
-    return (
-      <div className="h-full w-full flex items-center justify-center">
-        <div className="flex self-center h-1/2 w-1/2 bg-[#179BD7] text-white font-bold text-center rounded-lg items-center justify-center">
-          Oops!
-          You are not authorized to access this page.
-        </div>
-      </div>
-    );
-  }
+  // //Only render children if user is signed in and has "admin" role
+  // if (!userRole) {
+  //   return (
+  //     <div className="h-full w-full flex items-center justify-center">
+  //       <div className="flex self-center h-1/2 w-1/2 bg-[#179BD7] text-white font-bold text-center rounded-lg items-center justify-center">
+  //         Oops!
+  //         You are not authorized to access this page.
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="">

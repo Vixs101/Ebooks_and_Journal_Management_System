@@ -45,19 +45,19 @@ function NavBar({ navigate }) {
         <NavMenu navigate={navigate}/>
         <ul className="md:flex items-center justify-between font-medium hidden w-2/4  text-sm lg:text-lg gap-4">
           <Link to="/">
-            <li className="hover:border-b-4">Home</li>
+            <li className="hover:border-b-2">Home</li>
           </Link>
           <Link to="ebooks">
-            <li className="hover:border-b-4">Ebooks</li>
+            <li className="hover:border-b-2">Ebooks</li>
           </Link>
           <Link to="journals">
-            <li className="hover:border-b-4">Journals</li>
+            <li className="hover:border-b-2">Journals</li>
           </Link>
           <Link to="report">
-            <li className="hover:border-b-4 mr-3">Report</li>
+            <li className="hover:border-b-2 mr-3">Report</li>
           </Link>
           <button
-            className="flex rounded-2xl text-[#179BD7] bg-white hover:bg-slate-200 md:w-16 lg:w-20 p-2 h-8 items-center border border-gray-50"
+            className="flex rounded-xl text-[#179BD7] bg-white hover:bg-slate-200 md:w-16 lg:w-20 p-2 h-8 items-center border border-gray-50"
             onClick={() => {
               handleSignOut(navigate);
             }}
