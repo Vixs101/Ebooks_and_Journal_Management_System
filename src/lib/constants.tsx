@@ -73,95 +73,111 @@ const links = [
       id:"1",
       image:"ebook1",
       title: "Book Title",
+      year: "Nill",
       Edition: "Edition/About Book" 
     },
     {
       id:"2",
       image:"ebook2",
       title: "Book Title",
+      year: "Nill",
       Edition: "Edition/About Book" 
     },
     {
       id:"3",
       image:"ebook3",
       title: "Book Title",
+      year: "Nill",
       Edition: "Edition/About Book" 
     },
     {
       id:"4",
       image:"ebook4",
       title: "Book Title",
+      year: "Nill",
       Edition: "Edition/About Book" 
     },
     {
       id:"5",
       image:"ebook5",
       title: "Book Title",
+      year: "Nill",
       Edition: "Edition/About Book" 
     },
     {
       id:"6",
       image:"ebook6",
       title: "Book Title",
+      year: "Nill",
       Edition: "Edition/About Book" 
     },
     {
       id:"7",
       image:"ebook7",
       title: "Book Title",
+      year: "Nill",
       Edition: "Edition/About Book" 
     },
     {
       id:"8",
       image:"ebook8",
       title: "Book Title",
+      year: "Nill",
       Edition: "Edition/About Book" 
     },
     {
       id:"5",
       image:"ebook5",
       title: "Book Title",
+      year: "Nill",
       Edition: "Edition/About Book" 
     },
     {
       id:"6",
       image:"ebook6",
       title: "Book Title",
+      year: "Nill",
       Edition: "Edition/About Book" 
     },
     {
       id:"7",
       image:"ebook7",
       title: "Book Title",
+      year: "Nill",
       Edition: "Edition/About Book" 
     },
     {
       id:"8",
       image:"ebook8",
       title: "Book Title",
+      year: "Nill",
       Edition: "Edition/About Book" 
     },    {
       id:"5",
       image:"ebook5",
       title: "Book Title",
+      year: "Nill",
       Edition: "Edition/About Book" 
     },
     {
       id:"6",
       image:"ebook6",
       title: "Book Title",
+      year: "Nill",
       Edition: "Edition/About Book" 
     },
     {
       id:"7",
       image:"ebook7",
       title: "Book Title",
+      year: "Nill",
       Edition: "Edition/About Book" 
     },
     {
       id:"8",
       image:"ebook8",
       title: "Book Title",
+      year: "Nill",
       Edition: "Edition/About Book" 
     },
   ]
