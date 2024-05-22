@@ -43,7 +43,7 @@ function NavBar({ navigate }) {
           <h1 className="text-lg lg:text-2xl font-semibold">TSU E-library</h1>
         </div>
         <NavMenu navigate={navigate}/>
-        <ul className="md:flex items-center justify-between font-medium hidden w-2/4  text-sm lg:text-lg gap-4">
+        <ul className="md:flex items-center justify-between font-medium hidden w-2/4  text-sm  gap-4">
           <Link to="/">
             <li className="hover:border-b-2">Home</li>
           </Link>
@@ -57,7 +57,7 @@ function NavBar({ navigate }) {
             <li className="hover:border-b-2 mr-3">Report</li>
           </Link>
           <button
-            className="flex rounded-xl text-[#179BD7] bg-white hover:bg-slate-200 md:w-16 lg:w-20 p-2 h-8 items-center border border-gray-50"
+            className="rounded-xl text-[#179BD7] bg-white hover:bg-slate-200 md:w-16 lg:w-20 h-8 items-center border border-gray-50"
             onClick={() => {
               handleSignOut(navigate);
             }}
